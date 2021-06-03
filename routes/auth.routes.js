@@ -32,8 +32,6 @@ router.post(
 
         const {email, password} = req.body;
 
-console.log(email,User)
-
         const candidate = await User.findOne({email})
 
         if (candidate) {
@@ -45,7 +43,7 @@ console.log(email,User)
 
         await user.save();
 
-       
+        res.status(201).json({message: "User created"});
 
     } catch(e) {
         res.status(500).json({message: e.message+"some server error"});

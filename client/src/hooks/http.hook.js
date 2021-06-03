@@ -11,9 +11,7 @@ export const useHttp = () => {
              body = JSON.stringify(body) ;
              headers['Content-Type'] = 'application/json'
             }
-console.log(body)
            const responce = await fetch(url, {method, body, headers});
-           console.log(responce)
            const data = await responce.json();
 
             if (!responce.ok) {
@@ -30,7 +28,7 @@ console.log(body)
         }
     }, [])
 
-    const clearError = () => setError(null);
+    const clearError =  useCallback(() => setError(null), [])
 
     return {loading, request, error, clearError};
 }
